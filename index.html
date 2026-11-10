@@ -85,9 +85,10 @@
                 <!-- Desktop Nav -->
                 <nav class="hidden md:flex space-x-8 text-sm font-semibold text-slate-600">
                     <a href="#overview" class="hover:text-uncc-green transition">Overview</a>
+                    <a href="#why-severe" class="hover:text-uncc-green transition">Why So Severe?</a>
                     <a href="#solutions" class="hover:text-uncc-green transition">Solutions</a>
                     <a href="#smart-parking" class="hover:text-uncc-green transition">Smart Deck Queueing</a>
-                    <a href="#reality-check" class="hover:text-uncc-green transition">Sports Funding Myth</a>
+                    <a href="#reality-check" class="hover:text-uncc-green transition">Funding & Construction Myths</a>
                     <a href="#chokepoints" class="hover:text-uncc-green transition">Chokepoints Map</a>
                     <a href="#calculator" class="hover:text-uncc-green transition">Calculator</a>
                 </nav>
@@ -109,9 +110,10 @@
         <!-- Mobile Menu Dropdown -->
         <div id="mobile-menu" class="hidden md:hidden border-t border-slate-100 bg-white px-4 pt-2 pb-6 space-y-3 shadow-lg">
             <a href="#overview" class="block py-2 text-slate-600 font-medium hover:text-uncc-green">Overview</a>
+            <a href="#why-severe" class="block py-2 text-slate-600 font-medium hover:text-uncc-green">Why So Severe?</a>
             <a href="#solutions" class="block py-2 text-slate-600 font-medium hover:text-uncc-green">Solutions</a>
             <a href="#smart-parking" class="block py-2 text-slate-600 font-medium hover:text-uncc-green">Smart Deck Queueing</a>
-            <a href="#reality-check" class="block py-2 text-slate-600 font-medium hover:text-uncc-green">Sports Funding Myth</a>
+            <a href="#reality-check" class="block py-2 text-slate-600 font-medium hover:text-uncc-green">Funding & Construction Myths</a>
             <a href="#chokepoints" class="block py-2 text-slate-600 font-medium hover:text-uncc-green">Chokepoints Map</a>
             <a href="#calculator" class="block py-2 text-slate-600 font-medium hover:text-uncc-green">Calculator</a>
         </div>
@@ -119,58 +121,60 @@
 
     <!-- Hero Section -->
     <section class="gradient-banner text-white relative overflow-hidden py-16 sm:py-24">
-        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-7 space-y-6">
-                    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-full text-uncc-lightGold text-xs font-semibold tracking-wide border border-white/20">
-                        <i class="fa-solid fa-circle-dot text-emerald-400 text-xs animate-pulse"></i> 
-                        UNC Charlotte Campus Transit Analysis & Action Plan
+    <!-- NEW SECTION: Why Has UNCC Traffic Gotten So Severe? -->
+    <section id="why-severe" class="py-16 bg-slate-900 text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-uncc-gold text-xs font-bold uppercase tracking-wider">Root Cause Analysis</span>
+                <h2 class="text-3xl font-extrabold sm:text-4xl mt-1">Why Has UNCC Traffic Gotten So Severe?</h2>
+                <p class="text-slate-300 text-sm mt-3 leading-relaxed">
+                    Campus congestion is not caused by a single issue. It is the cumulative result of regional population booms, campus design constraints, and scheduling surges.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Reason 1: High Commuter Population -->
+                <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 hover:border-uncc-green transition">
+                    <div class="w-10 h-10 bg-emerald-500/20 text-emerald-400 rounded-xl flex items-center justify-center text-lg font-bold mb-4">
+                        <i class="fa-solid fa-users text-xl"></i>
                     </div>
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
-                        Solving Campus Gridlock with <span class="text-uncc-gold">Smart Mobility</span>
-                    </h1>
-                    <p class="text-slate-200 text-base sm:text-lg max-w-2xl font-normal leading-relaxed">
-                        Thousands of commuters experience peak bottlenecks on Cameron Blvd, Craver Rd, and W.T. Harris. Explore live deck sensors, geofenced spot queueing, and engineering-backed transit fixes for UNC Charlotte.
+                    <h3 class="text-lg font-bold text-white mb-2">70%+ Commuter Ratio</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed">
+                        Over 21,000 of UNCC's 30,000+ students commute daily, with more than 85% driving single-occupancy vehicles rather than carpooling or using public transit.
                     </p>
-                    <div class="flex flex-wrap gap-4 pt-2">
-                        <a href="#solutions" class="bg-uncc-gold hover:bg-yellow-600 text-slate-900 font-bold px-6 py-3.5 rounded-xl transition shadow-lg flex items-center gap-2">
-                            Explore Solutions <i class="fa-solid fa-arrow-right text-xs"></i>
-                        </a>
-                        <a href="#smart-parking" class="bg-white/10 hover:bg-white/20 text-white font-medium px-6 py-3.5 rounded-xl border border-white/20 backdrop-blur-sm transition flex items-center gap-2">
-                            <i class="fa-solid fa-square-parking text-emerald-400"></i> Smart Deck Sensor System
-                        </a>
-                    </div>
                 </div>
 
-                <!-- Dynamic Quick Stats Card -->
-                <div class="lg:col-span-5">
-                    <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 sm:p-8 text-white space-y-6 shadow-2xl">
-                        <h3 class="text-lg font-bold border-b border-white/10 pb-3 flex items-center gap-2">
-                            <i class="fa-solid fa-chart-line text-uncc-gold"></i> UNC Charlotte Peak Traffic Snapshot
-                        </h3>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="bg-black/20 p-4 rounded-xl border border-white/10">
-                                <span class="text-3xl font-extrabold text-uncc-gold block">8–11 AM</span>
-                                <span class="text-xs text-slate-300">Morning Peak Rush</span>
-                            </div>
-                            <div class="bg-black/20 p-4 rounded-xl border border-white/10">
-                                <span class="text-3xl font-extrabold text-uncc-gold block">3–5:30 PM</span>
-                                <span class="text-xs text-slate-300">Evening Exit Peak</span>
-                            </div>
-                            <div class="bg-black/20 p-4 rounded-xl border border-white/10">
-                                <span class="text-3xl font-extrabold text-white block">30,000+</span>
-                                <span class="text-xs text-slate-300">Daily Commuter Trips</span>
-                            </div>
-                            <div class="bg-black/20 p-4 rounded-xl border border-white/10">
-                                <span class="text-3xl font-extrabold text-emerald-400 block">-35%</span>
-                                <span class="text-xs text-slate-300">Target Congestion Reduction</span>
-                            </div>
-                        </div>
-                        <p class="text-xs text-slate-300 italic">
-                            *Primary bottlenecks occur at intersections connecting Cameron Blvd with Charlotte municipal arterials and deck entryways.
-                        </p>
+                <!-- Reason 2: The Municipal Funnel Effect -->
+                <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 hover:border-uncc-green transition">
+                    <div class="w-10 h-10 bg-amber-500/20 text-amber-400 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-funnel-dollar text-xl"></i>
                     </div>
+                    <h3 class="text-lg font-bold text-white mb-2">The Municipal Funnel</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed">
+                        All internal traffic is funneled through just 4 main gates onto heavily congested Charlotte arterials (W.T. Harris, N. Tryon, & University City Blvd).
+                    </p>
+                </div>
+
+                <!-- Reason 3: Simultaneous Arrival Spikes -->
+                <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 hover:border-uncc-green transition">
+                    <div class="w-10 h-10 bg-rose-500/20 text-rose-400 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-wave-square text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Synchronized Schedule Waves</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed">
+                        Standardized 50 and 75-minute class schedules force thousands of vehicles onto campus roads simultaneously during 8:00 AM–10:30 AM and 3:00 PM–5:00 PM peaks.
+                    </p>
+                </div>
+
+                <!-- Reason 4: Regional Expansion Boom -->
+                <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 hover:border-uncc-green transition">
+                    <div class="w-10 h-10 bg-blue-500/20 text-blue-400 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-city text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">University City Growth</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed">
+                        Rapid commercial and residential development surrounding University City has flooded external perimeter roads with non-UNCC throughtraffic.
+                    </p>
                 </div>
             </div>
         </div>
@@ -223,171 +227,136 @@
         </div>
     </section>
 
-    <!-- Detailed Smart Parking & Geofenced Queueing Solution Breakdown -->
-    <section id="smart-parking" class="py-16 bg-slate-900 text-white relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- NEW SECTION: Why Campus Congestion Has Gotten So Bad (Root Causes) -->
+    <section class="py-16 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-12">
-                <span class="text-uncc-gold text-xs font-bold uppercase tracking-wider">Featured Innovation</span>
-                <h2 class="text-3xl font-extrabold sm:text-4xl mt-1">Smart Garage Sensors & Geofenced Spot Queueing</h2>
-                <p class="text-slate-300 text-sm mt-3">
-                    Eliminate parking deck circling with overhead red/green status sensors paired with an anti-squatting, geofenced mobile reservation app.
+                <span class="text-uncc-green font-bold text-xs uppercase tracking-wider">Demographics & Infrastructure Growth</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl mt-1">Why Has UNCC Traffic Gotten So Severe?</h2>
+                <p class="mt-3 text-slate-600 text-sm">
+                    Gridlock at UNC Charlotte isn't an accident—it's the result of rapid university growth colliding with commuter-heavy demographics and municipal road limits.
                 </p>
             </div>
 
-            <!-- Visual Simulation Card -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                <!-- Garage Floor Simulation -->
-                <div class="lg:col-span-7 bg-slate-800 border border-slate-700 rounded-3xl p-6 sm:p-8">
-                    <div class="flex justify-between items-center mb-6">
-                        <div class="flex items-center gap-2">
-                            <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
-                            <span class="text-xs font-bold text-white uppercase tracking-wider">Live Simulation: Union Deck Floor 2</span>
-                        </div>
-                        <div class="flex gap-3 text-xs font-medium">
-                            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span> Available</span>
-                            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span> Occupied</span>
-                        </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                    <div class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center text-lg font-bold mb-4">
+                        <i class="fa-solid fa-users"></i>
                     </div>
-
-                    <!-- Parking Bay Grid Simulation -->
-                    <div class="grid grid-cols-4 gap-3 bg-slate-900 p-6 rounded-2xl border border-slate-700 mb-6">
-                        <!-- Spot 1: Occupied -->
-                        <div class="bg-slate-800 p-3 rounded-xl border border-red-500/50 flex flex-col items-center justify-between h-24 relative">
-                            <div class="w-3 h-3 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)]"></div>
-                            <i class="fa-solid fa-car text-slate-500 text-xl"></i>
-                            <span class="text-[10px] font-mono text-slate-400">SPOT 201</span>
-                        </div>
-                        <!-- Spot 2: Available -->
-                        <div class="bg-slate-800/80 p-3 rounded-xl border border-emerald-500/50 flex flex-col items-center justify-between h-24 relative">
-                            <div class="w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]"></div>
-                            <span class="text-xs font-bold text-emerald-400">OPEN</span>
-                            <span class="text-[10px] font-mono text-slate-400">SPOT 202</span>
-                        </div>
-                        <!-- Spot 3: Occupied -->
-                        <div class="bg-slate-800 p-3 rounded-xl border border-red-500/50 flex flex-col items-center justify-between h-24 relative">
-                            <div class="w-3 h-3 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)]"></div>
-                            <i class="fa-solid fa-car text-slate-500 text-xl"></i>
-                            <span class="text-[10px] font-mono text-slate-400">SPOT 203</span>
-                        </div>
-                        <!-- Spot 4: Available -->
-                        <div class="bg-slate-800/80 p-3 rounded-xl border border-emerald-500/50 flex flex-col items-center justify-between h-24 relative">
-                            <div class="w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]"></div>
-                            <span class="text-xs font-bold text-emerald-400">OPEN</span>
-                            <span class="text-[10px] font-mono text-slate-400">SPOT 204</span>
-                        </div>
-                    </div>
-
-                    <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-700 text-xs text-slate-300 leading-relaxed">
-                        <strong class="text-uncc-gold">How Overhead Sensors Work:</strong> Ultrasonic overhead lights glow green for open bays and red for occupied ones, visible from the aisle entrance. Digital LED tally boards at garage entryways immediately display open spot counts per floor.
-                    </div>
+                    <h3 class="font-bold text-slate-900 text-base mb-2">70%+ Commuter Ratio</h3>
+                    <p class="text-slate-600 text-xs leading-relaxed">
+                        Unlike traditional residential campuses, over 70% of UNCC's 30,000+ students commute daily from across the Charlotte region, requiring high daily vehicle capacity.
+                    </p>
                 </div>
 
-                <!-- Smart Queueing & Problem Solving Section -->
-                <div class="lg:col-span-5 space-y-6">
-                    <div class="bg-slate-800 border border-slate-700 rounded-3xl p-6 sm:p-8">
-                        <div class="flex items-center gap-2 text-uncc-gold text-xs font-bold uppercase tracking-wider mb-2">
-                            <i class="fa-solid fa-shield-halved"></i> Preventing Off-Campus Squatting
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-4">How Smart Geofenced Queueing Works</h3>
-                        <p class="text-slate-300 text-xs leading-relaxed mb-6">
-                            A major concern with spot reservation queues is drivers reserving spots hours early from their bedroom or off-campus apartments. The NinerFlow queueing system fixes this with 3 anti-abuse controls:
-                        </p>
-
-                        <div class="space-y-4">
-                            <!-- Rule 1 -->
-                            <div class="flex gap-3 items-start bg-slate-900/80 p-3.5 rounded-xl border border-slate-700">
-                                <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 font-bold text-xs">
-                                    <i class="fa-solid fa-location-dot"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-white text-xs">1. 0.5-Mile Geofence Radius</h4>
-                                    <p class="text-slate-400 text-[11px] mt-0.5">App GPS unlocks queueing capability ONLY when your vehicle enters within 0.5 miles of campus boundaries (e.g., crossing W.T. Harris or University City Blvd).</p>
-                                </div>
-                            </div>
-
-                            <!-- Rule 2 -->
-                            <div class="flex gap-3 items-start bg-slate-900/80 p-3.5 rounded-xl border border-slate-700">
-                                <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 font-bold text-xs">
-                                    <i class="fa-solid fa-stopwatch"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-white text-xs">2. Strict 7-Minute Check-in Timer</h4>
-                                    <p class="text-slate-400 text-[11px] mt-0.5">Once assigned a spot queue, you have 7 minutes to pass the deck gate LPR (License Plate Reader). Unoccupied spots automatically drop back into the live pool.</p>
-                                </div>
-                            </div>
-
-                            <!-- Rule 3 -->
-                            <div class="flex gap-3 items-start bg-slate-900/80 p-3.5 rounded-xl border border-slate-700">
-                                <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 font-bold text-xs">
-                                    <i class="fa-solid fa-id-card"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-white text-xs">3. License Plate Recognition (LPR) Sync</h4>
-                                    <p class="text-slate-400 text-[11px] mt-0.5">Existing UNCC parking permits link directly to vehicle license plates. Gate cameras instantly verify registered queue holders upon arrival.</p>
-                                </div>
-                            </div>
-                        </div>
+                <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                    <div class="w-10 h-10 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center text-lg font-bold mb-4">
+                        <i class="fa-solid fa-route"></i>
                     </div>
+                    <h3 class="font-bold text-slate-900 text-base mb-2">The Municipal Bottleneck</h3>
+                    <p class="text-slate-600 text-xs leading-relaxed">
+                        Campus perimeter roads empty onto heavily clogged city thoroughfares (W.T. Harris & N. Tryon). UNCC cannot modify off-campus roads without multi-year NCDOT approvals.
+                    </p>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                    <div class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center text-lg font-bold mb-4">
+                        <i class="fa-solid fa-car-side"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-base mb-2">Single-Occupancy Vehicles</h3>
+                    <p class="text-slate-600 text-xs leading-relaxed">
+                        Over 85% of commuter vehicles hold only a single driver. Low carpooling rates and lack of suburban park-and-ride hubs maximize vehicle counts per student.
+                    </p>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                    <div class="w-10 h-10 bg-rose-100 text-rose-600 rounded-xl flex items-center justify-center text-lg font-bold mb-4">
+                        <i class="fa-solid fa-building-columns"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-base mb-2">Rapid Enrollment Surge</h3>
+                    <p class="text-slate-600 text-xs leading-relaxed">
+                        UNCC grew into North Carolina's 2nd largest public university, but central campus physical road footprints have remained static for decades.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Policy Reality Check Section (Sports Funding Myth) -->
+    <!-- Detailed Smart Parking & Geofenced Queueing Solution Breakdown -->
+    <section id="smart-parking" class="py-16 bg-slate-900 text-white relative overflow-hidden">
+    <!-- RENAMED & EXPANDED: Policy & Engineering Realities Section -->
     <section id="reality-check" class="py-16 bg-slate-100 border-y border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-xl overflow-hidden relative">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-amber-100/50 rounded-full blur-3xl -z-0"></div>
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="text-uncc-green font-bold text-xs uppercase tracking-wider">Unpacking Misconceptions</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl mt-1">Why Quick Fixes Don't Work</h2>
+                <p class="text-slate-600 text-base mt-2">
+                    To understand real solutions, we must address two common myths: cutting sports budgets and simply throwing money at road construction.
+                </p>
+            </div>
 
-                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                    <div class="lg:col-span-7 space-y-5">
-                        <div class="inline-flex items-center gap-2 bg-amber-50 text-amber-800 border border-amber-200 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-                            <i class="fa-solid fa-circle-info"></i> Policy & Budget Reality Check
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Card A: The Sports Funding Myth -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-lg flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="inline-flex items-center gap-2 bg-amber-50 text-amber-800 border border-amber-200 px-3 py-1 rounded-full text-xs font-bold uppercase">
+                            <i class="fa-solid fa-gavel"></i> Policy Myth #1
                         </div>
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight">
+                        <h3 class="text-2xl font-bold text-slate-900">
                             Why Can't UNCC Cut Sports Funding for Traffic?
-                        </h2>
-                        <p class="text-slate-600 text-base leading-relaxed">
-                            A common suggestion is: <em class="font-semibold text-slate-800">"Why not take millions from Athletics and build wider roads or free shuttles?"</em> While it sounds intuitive, state policy and university accounting laws make this legally impossible.
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            It sounds simple to shift money from athletics to civil infrastructure, but North Carolina law and university accounting forbid it:
                         </p>
-
-                        <div class="space-y-4 pt-2">
-                            <div class="flex gap-4 items-start">
-                                <div class="w-8 h-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center shrink-0 font-bold text-sm">1</div>
-                                <div>
-                                    <h4 class="font-bold text-slate-900 text-sm">Auxiliary Enterprise Status</h4>
-                                    <p class="text-slate-600 text-xs mt-0.5">Under North Carolina state policy, UNCC Athletics operates as an independent "auxiliary enterprise". It does not receive general state tax dollars or academic tuition.</p>
-                                </div>
+                        <div class="space-y-3">
+                            <div class="flex gap-3 items-start bg-slate-50 p-3 rounded-xl border border-slate-200">
+                                <i class="fa-solid fa-lock text-amber-600 mt-1 shrink-0"></i>
+                                <p class="text-slate-700 text-xs"><strong class="text-slate-900">Auxiliary Legal Lock:</strong> UNCC Athletics is an "auxiliary enterprise" funded by student athletic fees, tickets, and sponsorships—not state tax or tuition dollars. Reallocating it to roads is illegal under state policy.</p>
                             </div>
-
-                            <div class="flex gap-4 items-start">
-                                <div class="w-8 h-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center shrink-0 font-bold text-sm">2</div>
-                                <div>
-                                    <h4 class="font-bold text-slate-900 text-sm">Restricted Revenue Streams</h4>
-                                    <p class="text-slate-600 text-xs mt-0.5">Sports funding comes strictly from dedicated sports student fees, ticket sales, media rights, private donations, and NC sports wagering taxes. By law, these funds cannot be transferred to civil roads or general campus infrastructure.</p>
-                                </div>
-                            </div>
-
-                            <div class="flex gap-4 items-start">
-                                <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 font-bold text-sm">3</div>
-                                <div>
-                                    <h4 class="font-bold text-slate-900 text-sm">The Real Solution</h4>
-                                    <p class="text-slate-600 text-xs mt-0.5">Campus civil improvements must be funded through state capital improvement funds, municipal partnerships with the City of Charlotte / NCDOT, parking auxiliary revenues, and federal transit grants.</p>
-                                </div>
+                            <div class="flex gap-3 items-start bg-slate-50 p-3 rounded-xl border border-slate-200">
+                                <i class="fa-solid fa-landmark text-emerald-600 mt-1 shrink-0"></i>
+                                <p class="text-slate-700 text-xs"><strong class="text-slate-900">Separate Capital Funds:</strong> Civil road projects must be funded through state capital allocations, NCDOT/Charlotte municipal grants, or parking revenues.</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Visual Chart / Breakdown -->
-                    <div class="lg:col-span-5 bg-slate-50 p-6 rounded-2xl border border-slate-200">
-                        <h3 class="text-sm font-bold text-slate-700 uppercase tracking-wider mb-4 text-center">
-                            UNCC Athletic Revenue Restrictions
-                        </h3>
-                        <div class="relative h-64">
+                    <!-- Doughnut Chart Container -->
+                    <div class="mt-6 pt-4 border-t border-slate-100">
+                        <div class="relative h-48">
                             <canvas id="fundingChart"></canvas>
                         </div>
-                        <p class="text-center text-xs text-slate-500 mt-4 font-medium">
-                            <i class="fa-solid fa-lock text-slate-400"></i> 100% Legally Restricted to Athletic Auxiliary Operations
+                    </div>
+                </div>
+
+                <!-- Card B: The Construction Fallacy & Induced Demand -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-lg flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="inline-flex items-center gap-2 bg-rose-50 text-rose-800 border border-rose-200 px-3 py-1 rounded-full text-xs font-bold uppercase">
+                            <i class="fa-solid fa-road-barrier"></i> Planning Myth #2
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900">
+                            The Construction Fallacy & Induced Demand
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Why can't UNCC simply throw money at asphalt to build wider roads or giant multi-thousand-spot parking decks?
+                        </p>
+                        <div class="space-y-3">
+                            <div class="flex gap-3 items-start bg-rose-50/50 p-3 rounded-xl border border-rose-100">
+                                <i class="fa-solid fa-infinity text-rose-600 mt-1 shrink-0"></i>
+                                <p class="text-slate-700 text-xs"><strong class="text-slate-900">Induced Demand Paradox:</strong> Civil engineering proves that adding lanes or deck capacity simply encourages more commuters to drive alone instead of taking shuttles or light rail, refilling new lanes with traffic within months.</p>
+                            </div>
+                            <div class="flex gap-3 items-start bg-rose-50/50 p-3 rounded-xl border border-rose-100">
+                                <i class="fa-solid fa-traffic-light text-rose-600 mt-1 shrink-0"></i>
+                                <p class="text-slate-700 text-xs"><strong class="text-slate-900">Off-Campus Exit Bottlenecks:</strong> Even if campus roads were 8 lanes wide, traffic would still grind to a halt at external Charlotte DOT traffic lights on W.T. Harris and N. Tryon.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Engineering Highlight Box -->
+                    <div class="mt-6 p-4 bg-slate-900 text-white rounded-2xl border border-slate-700 space-y-2">
+                        <span class="text-xs font-bold text-uncc-gold uppercase tracking-wider block"><i class="fa-solid fa-lightbulb mr-1"></i> Urban Planning Takeaway</span>
+                        <p class="text-slate-300 text-xs leading-relaxed">
+                            The real fix isn't more asphalt—it's <strong>Demand Management</strong>: intelligent signals, smart deck spot sensors, micro-mobility highways, and staggered class schedules.
                         </p>
                     </div>
                 </div>
