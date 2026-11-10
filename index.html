@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNCC Traffic Solutions Portal | Fixing Campus Gridlock</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        uncc: {
+                            green: '#00703C',
+                            darkGreen: '#005A30',
+                            gold: '#B3A369',
+                            lightGold: '#E2D8B3',
+                            lightBg: '#F8FAF8',
+                            darkBg: '#0F172A',
+                            accent: '#D97706'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #00703C;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #005A30;
+        }
+        .gradient-banner {
+            background: linear-gradient(135deg, #00703C 0%, #00381E 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -10px rgba(0, 112, 60, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased font-sans">
+
+    <!-- Header / Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo / Title -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-11 h-11 bg-uncc-green rounded-xl flex items-center justify-center text-white text-xl font-bold shadow-md">
+                        <i class="fa-solid fa-car-side"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center space-x-2">
+                            <span class="font-extrabold text-xl text-uncc-green tracking-tight">NINER</span>
+                            <span class="bg-uncc-gold text-slate-900 text-xs font-black px-2 py-0.5 rounded tracking-wider">FLOW</span>
+                        </div>
+                        <p class="text-xs text-slate-500 font-medium">UNC Charlotte Traffic & Transit Mobility Initiative</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex space-x-8 text-sm font-semibold text-slate-600">
+                    <a href="#overview" class="hover:text-uncc-green transition">Overview</a>
+                    <a href="#solutions" class="hover:text-uncc-green transition">Solutions</a>
+                    <a href="#smart-parking" class="hover:text-uncc-green transition">Smart Deck Queueing</a>
+                    <a href="#reality-check" class="hover:text-uncc-green transition">Sports Funding Myth</a>
+                    <a href="#chokepoints" class="hover:text-uncc-green transition">Chokepoints Map</a>
+                    <a href="#calculator" class="hover:text-uncc-green transition">Calculator</a>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="hidden sm:block">
+                    <a href="#calculator" class="bg-uncc-green hover:bg-uncc-darkGreen text-white px-4 py-2.5 rounded-lg font-semibold text-sm transition shadow-sm hover:shadow flex items-center gap-2">
+                        <i class="fa-solid fa-calculator"></i> Calculate Time Saved
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-slate-600 hover:text-slate-900 focus:outline-none p-2" aria-label="Toggle Navigation">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-100 bg-white px-4 pt-2 pb-6 space-y-3 shadow-lg">
+            <a href="#overview" class="block py-2 text-slate-600 font-medium hover:text-uncc-green">Overview</a>
+            <a href="#solutions" class="block py-2 text-slate-600 font-medium hover:text-uncc-green">Solutions</a>
+            <a href="#smart-parking" class="block py-2 text-slate-600 font-medium hover:text-uncc-green">Smart Deck Queueing</a>
+            <a href="#reality-check" class="block py-2 text-slate-600 font-medium hover:text-uncc-green">Sports Funding Myth</a>
+            <a href="#chokepoints" class="block py-2 text-slate-600 font-medium hover:text-uncc-green">Chokepoints Map</a>
+            <a href="#calculator" class="block py-2 text-slate-600 font-medium hover:text-uncc-green">Calculator</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-banner text-white relative overflow-hidden py-16 sm:py-24">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-full text-uncc-lightGold text-xs font-semibold tracking-wide border border-white/20">
+                        <i class="fa-solid fa-circle-dot text-emerald-400 text-xs animate-pulse"></i> 
+                        UNC Charlotte Campus Transit Analysis & Action Plan
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                        Solving Campus Gridlock with <span class="text-uncc-gold">Smart Mobility</span>
+                    </h1>
+                    <p class="text-slate-200 text-base sm:text-lg max-w-2xl font-normal leading-relaxed">
+                        Thousands of commuters experience peak bottlenecks on Cameron Blvd, Craver Rd, and W.T. Harris. Explore live deck sensors, geofenced spot queueing, and engineering-backed transit fixes for UNC Charlotte.
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <a href="#solutions" class="bg-uncc-gold hover:bg-yellow-600 text-slate-900 font-bold px-6 py-3.5 rounded-xl transition shadow-lg flex items-center gap-2">
+                            Explore Solutions <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                        <a href="#smart-parking" class="bg-white/10 hover:bg-white/20 text-white font-medium px-6 py-3.5 rounded-xl border border-white/20 backdrop-blur-sm transition flex items-center gap-2">
+                            <i class="fa-solid fa-square-parking text-emerald-400"></i> Smart Deck Sensor System
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Dynamic Quick Stats Card -->
+                <div class="lg:col-span-5">
+                    <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 sm:p-8 text-white space-y-6 shadow-2xl">
+                        <h3 class="text-lg font-bold border-b border-white/10 pb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-chart-line text-uncc-gold"></i> UNC Charlotte Peak Traffic Snapshot
+                        </h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-black/20 p-4 rounded-xl border border-white/10">
+                                <span class="text-3xl font-extrabold text-uncc-gold block">8–11 AM</span>
+                                <span class="text-xs text-slate-300">Morning Peak Rush</span>
+                            </div>
+                            <div class="bg-black/20 p-4 rounded-xl border border-white/10">
+                                <span class="text-3xl font-extrabold text-uncc-gold block">3–5:30 PM</span>
+                                <span class="text-xs text-slate-300">Evening Exit Peak</span>
+                            </div>
+                            <div class="bg-black/20 p-4 rounded-xl border border-white/10">
+                                <span class="text-3xl font-extrabold text-white block">30,000+</span>
+                                <span class="text-xs text-slate-300">Daily Commuter Trips</span>
+                            </div>
+                            <div class="bg-black/20 p-4 rounded-xl border border-white/10">
+                                <span class="text-3xl font-extrabold text-emerald-400 block">-35%</span>
+                                <span class="text-xs text-slate-300">Target Congestion Reduction</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-300 italic">
+                            *Primary bottlenecks occur at intersections connecting Cameron Blvd with Charlotte municipal arterials and deck entryways.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview & Problem Context -->
+    <section id="overview" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">Understanding the Bottleneck</h2>
+                <p class="mt-4 text-slate-600 text-lg">
+                    Why does traffic gridlock happen at UNCC, and why isn't fixing it as simple as reallocating money?
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 card-hover">
+                    <div class="w-12 h-12 bg-emerald-100 text-uncc-green rounded-xl flex items-center justify-center text-xl font-bold mb-5">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Simultaneous Arrival Curves</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Standard 50 and 75-minute block schedules force thousands of drivers onto campus roads at exact identical intervals, creating artificial surge peaks.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 card-hover">
+                    <div class="w-12 h-12 bg-amber-100 text-amber-700 rounded-xl flex items-center justify-center text-xl font-bold mb-5">
+                        <i class="fa-solid fa-road text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Municipal Intersection Off-Flow</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Internal campus roads dump traffic directly onto heavy Charlotte DOT arterials (W.T. Harris, N. Tryon, University City Blvd) without dedicated turn bypasses.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 card-hover">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-xl flex items-center justify-center text-xl font-bold mb-5">
+                        <i class="fa-solid fa-square-parking"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Blind Spot Searching</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Without real-time deck occupancy indicators, drivers continuously circle decks like Union or Craver hoping for open spots, blocking incoming traffic lanes.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Smart Parking & Geofenced Queueing Solution Breakdown -->
+    <section id="smart-parking" class="py-16 bg-slate-900 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-uncc-gold text-xs font-bold uppercase tracking-wider">Featured Innovation</span>
+                <h2 class="text-3xl font-extrabold sm:text-4xl mt-1">Smart Garage Sensors & Geofenced Spot Queueing</h2>
+                <p class="text-slate-300 text-sm mt-3">
+                    Eliminate parking deck circling with overhead red/green status sensors paired with an anti-squatting, geofenced mobile reservation app.
+                </p>
+            </div>
+
+            <!-- Visual Simulation Card -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Garage Floor Simulation -->
+                <div class="lg:col-span-7 bg-slate-800 border border-slate-700 rounded-3xl p-6 sm:p-8">
+                    <div class="flex justify-between items-center mb-6">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <span class="text-xs font-bold text-white uppercase tracking-wider">Live Simulation: Union Deck Floor 2</span>
+                        </div>
+                        <div class="flex gap-3 text-xs font-medium">
+                            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span> Available</span>
+                            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span> Occupied</span>
+                        </div>
+                    </div>
+
+                    <!-- Parking Bay Grid Simulation -->
+                    <div class="grid grid-cols-4 gap-3 bg-slate-900 p-6 rounded-2xl border border-slate-700 mb-6">
+                        <!-- Spot 1: Occupied -->
+                        <div class="bg-slate-800 p-3 rounded-xl border border-red-500/50 flex flex-col items-center justify-between h-24 relative">
+                            <div class="w-3 h-3 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)]"></div>
+                            <i class="fa-solid fa-car text-slate-500 text-xl"></i>
+                            <span class="text-[10px] font-mono text-slate-400">SPOT 201</span>
+                        </div>
+                        <!-- Spot 2: Available -->
+                        <div class="bg-slate-800/80 p-3 rounded-xl border border-emerald-500/50 flex flex-col items-center justify-between h-24 relative">
+                            <div class="w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]"></div>
+                            <span class="text-xs font-bold text-emerald-400">OPEN</span>
+                            <span class="text-[10px] font-mono text-slate-400">SPOT 202</span>
+                        </div>
+                        <!-- Spot 3: Occupied -->
+                        <div class="bg-slate-800 p-3 rounded-xl border border-red-500/50 flex flex-col items-center justify-between h-24 relative">
+                            <div class="w-3 h-3 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)]"></div>
+                            <i class="fa-solid fa-car text-slate-500 text-xl"></i>
+                            <span class="text-[10px] font-mono text-slate-400">SPOT 203</span>
+                        </div>
+                        <!-- Spot 4: Available -->
+                        <div class="bg-slate-800/80 p-3 rounded-xl border border-emerald-500/50 flex flex-col items-center justify-between h-24 relative">
+                            <div class="w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]"></div>
+                            <span class="text-xs font-bold text-emerald-400">OPEN</span>
+                            <span class="text-[10px] font-mono text-slate-400">SPOT 204</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-700 text-xs text-slate-300 leading-relaxed">
+                        <strong class="text-uncc-gold">How Overhead Sensors Work:</strong> Ultrasonic overhead lights glow green for open bays and red for occupied ones, visible from the aisle entrance. Digital LED tally boards at garage entryways immediately display open spot counts per floor.
+                    </div>
+                </div>
+
+                <!-- Smart Queueing & Problem Solving Section -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="bg-slate-800 border border-slate-700 rounded-3xl p-6 sm:p-8">
+                        <div class="flex items-center gap-2 text-uncc-gold text-xs font-bold uppercase tracking-wider mb-2">
+                            <i class="fa-solid fa-shield-halved"></i> Preventing Off-Campus Squatting
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">How Smart Geofenced Queueing Works</h3>
+                        <p class="text-slate-300 text-xs leading-relaxed mb-6">
+                            A major concern with spot reservation queues is drivers reserving spots hours early from their bedroom or off-campus apartments. The NinerFlow queueing system fixes this with 3 anti-abuse controls:
+                        </p>
+
+                        <div class="space-y-4">
+                            <!-- Rule 1 -->
+                            <div class="flex gap-3 items-start bg-slate-900/80 p-3.5 rounded-xl border border-slate-700">
+                                <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 font-bold text-xs">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-xs">1. 0.5-Mile Geofence Radius</h4>
+                                    <p class="text-slate-400 text-[11px] mt-0.5">App GPS unlocks queueing capability ONLY when your vehicle enters within 0.5 miles of campus boundaries (e.g., crossing W.T. Harris or University City Blvd).</p>
+                                </div>
+                            </div>
+
+                            <!-- Rule 2 -->
+                            <div class="flex gap-3 items-start bg-slate-900/80 p-3.5 rounded-xl border border-slate-700">
+                                <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 font-bold text-xs">
+                                    <i class="fa-solid fa-stopwatch"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-xs">2. Strict 7-Minute Check-in Timer</h4>
+                                    <p class="text-slate-400 text-[11px] mt-0.5">Once assigned a spot queue, you have 7 minutes to pass the deck gate LPR (License Plate Reader). Unoccupied spots automatically drop back into the live pool.</p>
+                                </div>
+                            </div>
+
+                            <!-- Rule 3 -->
+                            <div class="flex gap-3 items-start bg-slate-900/80 p-3.5 rounded-xl border border-slate-700">
+                                <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 font-bold text-xs">
+                                    <i class="fa-solid fa-id-card"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-xs">3. License Plate Recognition (LPR) Sync</h4>
+                                    <p class="text-slate-400 text-[11px] mt-0.5">Existing UNCC parking permits link directly to vehicle license plates. Gate cameras instantly verify registered queue holders upon arrival.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Policy Reality Check Section (Sports Funding Myth) -->
+    <section id="reality-check" class="py-16 bg-slate-100 border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-xl overflow-hidden relative">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-amber-100/50 rounded-full blur-3xl -z-0"></div>
+
+                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7 space-y-5">
+                        <div class="inline-flex items-center gap-2 bg-amber-50 text-amber-800 border border-amber-200 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                            <i class="fa-solid fa-circle-info"></i> Policy & Budget Reality Check
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight">
+                            Why Can't UNCC Cut Sports Funding for Traffic?
+                        </h2>
+                        <p class="text-slate-600 text-base leading-relaxed">
+                            A common suggestion is: <em class="font-semibold text-slate-800">"Why not take millions from Athletics and build wider roads or free shuttles?"</em> While it sounds intuitive, state policy and university accounting laws make this legally impossible.
+                        </p>
+
+                        <div class="space-y-4 pt-2">
+                            <div class="flex gap-4 items-start">
+                                <div class="w-8 h-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center shrink-0 font-bold text-sm">1</div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 text-sm">Auxiliary Enterprise Status</h4>
+                                    <p class="text-slate-600 text-xs mt-0.5">Under North Carolina state policy, UNCC Athletics operates as an independent "auxiliary enterprise". It does not receive general state tax dollars or academic tuition.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-4 items-start">
+                                <div class="w-8 h-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center shrink-0 font-bold text-sm">2</div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 text-sm">Restricted Revenue Streams</h4>
+                                    <p class="text-slate-600 text-xs mt-0.5">Sports funding comes strictly from dedicated sports student fees, ticket sales, media rights, private donations, and NC sports wagering taxes. By law, these funds cannot be transferred to civil roads or general campus infrastructure.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-4 items-start">
+                                <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 font-bold text-sm">3</div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 text-sm">The Real Solution</h4>
+                                    <p class="text-slate-600 text-xs mt-0.5">Campus civil improvements must be funded through state capital improvement funds, municipal partnerships with the City of Charlotte / NCDOT, parking auxiliary revenues, and federal transit grants.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual Chart / Breakdown -->
+                    <div class="lg:col-span-5 bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <h3 class="text-sm font-bold text-slate-700 uppercase tracking-wider mb-4 text-center">
+                            UNCC Athletic Revenue Restrictions
+                        </h3>
+                        <div class="relative h-64">
+                            <canvas id="fundingChart"></canvas>
+                        </div>
+                        <p class="text-center text-xs text-slate-500 mt-4 font-medium">
+                            <i class="fa-solid fa-lock text-slate-400"></i> 100% Legally Restricted to Athletic Auxiliary Operations
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comprehensive Solutions Section -->
+    <section id="solutions" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+                <div>
+                    <span class="text-uncc-green font-bold text-xs uppercase tracking-wider">Actionable Strategies</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mt-1 sm:text-4xl">Actionable Solutions Matrix</h2>
+                </div>
+                <!-- Category Filter Tabs -->
+                <div class="mt-4 md:mt-0 flex flex-wrap gap-2" id="filter-tabs">
+                    <button onclick="filterSolutions('all')" class="tab-btn active bg-uncc-green text-white text-xs font-semibold px-4 py-2 rounded-lg transition">All Ideas</button>
+                    <button onclick="filterSolutions('infra')" class="tab-btn bg-slate-100 text-slate-600 hover:bg-slate-200 text-xs font-semibold px-4 py-2 rounded-lg transition">Infrastructure</button>
+                    <button onclick="filterSolutions('transit')" class="tab-btn bg-slate-100 text-slate-600 hover:bg-slate-200 text-xs font-semibold px-4 py-2 rounded-lg transition">Transit & Parking Tech</button>
+                    <button onclick="filterSolutions('demand')" class="tab-btn bg-slate-100 text-slate-600 hover:bg-slate-200 text-xs font-semibold px-4 py-2 rounded-lg transition">Scheduling & Demand</button>
+                </div>
+            </div>
+
+            <!-- Solution Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="solutions-container">
+                <!-- Cards will be populated by JS for interactivity -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Campus Chokepoints Map & Spotlights -->
+    <section id="chokepoints" class="py-16 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-uncc-gold text-xs font-bold uppercase tracking-wider">Hotspots Analysis</span>
+                <h2 class="text-3xl font-extrabold sm:text-4xl mt-1">UNC Charlotte Traffic Bottlenecks</h2>
+                <p class="text-slate-400 text-sm mt-3">Click on a key campus intersection below to view specific targeted engineering fixes.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Interactive SVG Map Canvas -->
+                <div class="lg:col-span-7 bg-slate-800 border border-slate-700 rounded-2xl p-6 relative overflow-hidden">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Campus Corridor Layout</span>
+                        <span class="text-xs text-amber-400 flex items-center gap-1 font-semibold">
+                            <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span> High Congestion Zones
+                        </span>
+                    </div>
+
+                    <!-- SVG Campus Map -->
+                    <div class="relative w-full aspect-[4/3] bg-slate-900 rounded-xl overflow-hidden border border-slate-700 flex items-center justify-center">
+                        <svg viewBox="0 0 600 450" class="w-full h-full">
+                            <!-- Background Grid -->
+                            <defs>
+                                <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+                                    <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#1e293b" stroke-width="1"/>
+                                </pattern>
+                            </defs>
+                            <rect width="100%" height="100%" fill="url(#grid)" />
+
+                            <!-- Campus Outer Ring Roads -->
+                            <!-- W.T. Harris Blvd -->
+                            <line x1="50" y1="50" x2="550" y2="50" stroke="#475569" stroke-width="14" />
+                            <text x="250" y="38" fill="#94a3b8" font-size="12" font-weight="bold">W.T. Harris Blvd</text>
+
+                            <!-- University City Blvd / N Tryon -->
+                            <line x1="50" y1="50" x2="50" y2="400" stroke="#475569" stroke-width="14" />
+                            <text x="15" y="230" fill="#94a3b8" font-size="12" font-weight="bold" transform="rotate(-90 15,230)">University City Blvd</text>
+
+                            <!-- Cameron Blvd Ring -->
+                            <path d="M 120 120 C 300 100, 500 150, 480 380 C 350 420, 180 400, 120 320 Z" fill="none" stroke="#00703C" stroke-width="10" stroke-dasharray="6 4" />
+                            <text x="280" y="125" fill="#00703C" font-size="12" font-weight="bold">Cameron Blvd Ring</text>
+
+                            <!-- Craver Road -->
+                            <line x1="120" y1="250" x2="400" y2="250" stroke="#64748b" stroke-width="8" />
+                            <text x="230" y="240" fill="#cbd5e1" font-size="11">Craver Road</text>
+
+                            <!-- Key Hotspots (Interactive Points) -->
+                            <!-- Hotspot 1: Harris & Cameron -->
+                            <g class="cursor-pointer group" onclick="selectHotspot(1)">
+                                <circle cx="480" cy="80" r="18" fill="#ef4444" fill-opacity="0.3" class="animate-ping" />
+                                <circle cx="480" cy="80" r="14" fill="#ef4444" stroke="#ffffff" stroke-width="2" />
+                                <text x="480" y="84" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">1</text>
+                            </g>
+
+                            <!-- Hotspot 2: Cameron & University City Blvd -->
+                            <g class="cursor-pointer group" onclick="selectHotspot(2)">
+                                <circle cx="85" cy="120" r="18" fill="#f59e0b" fill-opacity="0.3" class="animate-ping" />
+                                <circle cx="85" cy="120" r="14" fill="#f59e0b" stroke="#ffffff" stroke-width="2" />
+                                <text x="85" y="124" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">2</text>
+                            </g>
+
+                            <!-- Hotspot 3: Craver Rd & Student Union Deck -->
+                            <g class="cursor-pointer group" onclick="selectHotspot(3)">
+                                <circle cx="280" cy="250" r="18" fill="#ef4444" fill-opacity="0.3" class="animate-ping" />
+                                <circle cx="280" cy="250" r="14" fill="#ef4444" stroke="#ffffff" stroke-width="2" />
+                                <text x="280" y="254" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">3</text>
+                            </g>
+
+                            <!-- Hotspot 4: LYNX Light Rail Station Point -->
+                            <g class="cursor-pointer group" onclick="selectHotspot(4)">
+                                <circle cx="50" cy="350" r="14" fill="#3b82f6" stroke="#ffffff" stroke-width="2" />
+                                <text x="50" y="354" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">4</text>
+                            </g>
+
+                            <!-- Labels -->
+                            <text x="320" y="190" fill="#64748b" font-size="13" font-weight="bold">Core Campus</text>
+                            <text x="180" y="340" fill="#64748b" font-size="12">South Village</text>
+                            <text x="400" y="330" fill="#64748b" font-size="12">CRI Campus</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Detail Panel for Selected Hotspot -->
+                <div class="lg:col-span-5 bg-slate-800/90 border border-slate-700 rounded-2xl p-6" id="hotspot-details">
+                    <!-- Dynamic Content set by JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commute Time & Time Saved Calculator -->
+    <section id="calculator" class="py-16 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-br from-uncc-green to-uncc-darkGreen rounded-3xl p-8 sm:p-12 text-white shadow-2xl">
+                <div class="text-center max-w-2xl mx-auto mb-10">
+                    <span class="bg-white/20 text-uncc-lightGold text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Interactive Tool</span>
+                    <h2 class="text-3xl font-extrabold sm:text-4xl mt-3">Commute & Time Saved Calculator</h2>
+                    <p class="text-slate-200 text-sm mt-2">See how much time and money you could save each semester with smart mobility alternatives.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <!-- Calculator Controls -->
+                    <div class="space-y-5 bg-black/20 p-6 rounded-2xl border border-white/10">
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-200 mb-2">Days On Campus Per Week</label>
+                            <input type="range" id="days-slider" min="1" max="5" value="4" class="w-full accent-uncc-gold cursor-pointer" oninput="updateCalculator()">
+                            <div class="flex justify-between text-xs text-slate-300 mt-1 font-semibold">
+                                <span>1 Day</span>
+                                <span id="days-val" class="text-uncc-gold font-bold">4 Days</span>
+                                <span>5 Days</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-200 mb-2">Current Daily Parking/Circling Delay (Mins)</label>
+                            <input type="range" id="delay-slider" min="10" max="60" value="25" step="5" class="w-full accent-uncc-gold cursor-pointer" oninput="updateCalculator()">
+                            <div class="flex justify-between text-xs text-slate-300 mt-1 font-semibold">
+                                <span>10 Mins</span>
+                                <span id="delay-val" class="text-uncc-gold font-bold">25 Mins</span>
+                                <span>60 Mins</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-200 mb-2">Primary Alternative Chosen</label>
+                            <select id="alt-mode" onchange="updateCalculator()" class="w-full bg-slate-900/90 border border-slate-700 text-white rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-uncc-gold">
+                                <option value="smart-app">Smart Deck Sensors & Live Queue App</option>
+                                <option value="park-ride">Outer Perimeter Park & Ride + Niner Shuttle</option>
+                                <option value="light-rail">LYNX Light Rail + Campus Walk</option>
+                                <option value="scooter">Micro-mobility / Scooter Highway Corridor</option>
+                                <option value="hybrid">Staggered/Hybrid Class Schedule</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Calculator Results -->
+                    <div class="bg-white text-slate-900 p-6 sm:p-8 rounded-2xl shadow-xl space-y-6">
+                        <h3 class="text-lg font-extrabold text-uncc-green border-b border-slate-100 pb-3 flex items-center justify-between">
+                            <span>Estimated Semester Savings</span>
+                            <i class="fa-solid fa-piggy-bank text-uncc-gold text-xl"></i>
+                        </h3>
+
+                        <div class="space-y-4">
+                            <div>
+                                <span class="text-xs text-slate-500 font-semibold uppercase tracking-wider block">Time Saved Per Semester</span>
+                                <span id="time-saved-res" class="text-4xl font-extrabold text-slate-900">26.6 <span class="text-lg font-normal text-slate-500">Hours</span></span>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4 pt-2 border-t border-slate-100">
+                                <div>
+                                    <span class="text-xs text-slate-500 font-medium">Gas & Vehicle Wear</span>
+                                    <span id="money-saved-res" class="text-xl font-bold text-emerald-600 block">$180</span>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-slate-500 font-medium">Stress Reduction Index</span>
+                                    <span id="stress-res" class="text-xl font-bold text-uncc-green block">High (82%)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 text-xs text-slate-600">
+                            <i class="fa-solid fa-leaf text-emerald-600 mr-1"></i> Reduces your carbon footprint by approximately <strong id="co2-res">42 kg CO2</strong> per semester.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Community Poll / Submit Proposal Section -->
+    <section id="submit" class="py-16 bg-slate-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-xl">
+                <div class="text-center mb-10">
+                    <span class="text-uncc-green text-xs font-bold uppercase tracking-wider">Student & Faculty Voice</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mt-1">Submit Your Campus Traffic Idea</h2>
+                    <p class="text-slate-600 text-sm mt-2">Have an idea for a specific intersection, shuttle route, or traffic fix? Submit it directly to our campus feedback dashboard.</p>
+                </div>
+
+                <form id="idea-form" onsubmit="handleIdeaSubmit(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Your Name / Role</label>
+                            <input type="text" required placeholder="e.g. Alex (UNC Charlotte Student)" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-uncc-green">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Category</label>
+                            <select required class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-uncc-green">
+                                <option value="">Select Category...</option>
+                                <option value="Smart Deck Tech">Smart Parking & App Sensors</option>
+                                <option value="Infrastructure">Civil / Road Infrastructure</option>
+                                <option value="Transit">Niner Transit / Shuttle Route</option>
+                                <option value="Bicycle">Bicycle & Scooter Lane</option>
+                                <option value="Scheduling">Class Scheduling / Hybrid</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Proposal Title</label>
+                        <input type="text" required placeholder="e.g. Add continuous LED spot availability signs at Union Deck entry" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-uncc-green">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Detailed Description & Benefits</label>
+                        <textarea required rows="4" placeholder="Describe the current issue and how your proposal fixes traffic congestion..." class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-uncc-green"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-uncc-green hover:bg-uncc-darkGreen text-white font-bold py-4 rounded-xl transition shadow-lg flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i> Submit Idea to Campus Community
+                    </button>
+                </form>
+
+                <!-- Feedback Toast Message -->
+                <div id="form-toast" class="hidden mt-6 p-4 bg-emerald-100 border border-emerald-300 text-emerald-800 rounded-xl text-sm font-semibold flex items-center gap-3">
+                    <i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i>
+                    <span>Thank you! Your traffic solution proposal has been logged successfully.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-9 h-9 bg-uncc-green rounded-lg flex items-center justify-center text-white font-bold text-lg">
+                        <i class="fa-solid fa-car-side"></i>
+                    </div>
+                    <div>
+                        <span class="font-extrabold text-white text-lg">UNCC Traffic Mobility Hub</span>
+                        <p class="text-xs text-slate-500">Student & Campus Engineering Proposal Dashboard</p>
+                    </div>
+                </div>
+
+                <div class="flex space-x-6 text-xs text-slate-400 font-medium">
+                    <a href="#overview" class="hover:text-white transition">Overview</a>
+                    <a href="#solutions" class="hover:text-white transition">Solutions</a>
+                    <a href="#smart-parking" class="hover:text-white transition">Smart Deck Queueing</a>
+                    <a href="#reality-check" class="hover:text-white transition">Funding Reality</a>
+                    <a href="#chokepoints" class="hover:text-white transition">Hotspots Map</a>
+                </div>
+
+                <div class="text-xs text-slate-500">
+                    &copy; 2026 UNCC Community Campus Mobility Project.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Data for Solutions
+        const solutionsData = [
+            {
+                id: 1,
+                category: 'transit',
+                title: 'Smart Deck Overhead Sensors & Live App',
+                tag: 'Transit & Parking Tech',
+                icon: 'fa-square-parking',
+                iconBg: 'bg-emerald-100 text-emerald-700',
+                description: 'Install red/green overhead ultrasonic spot lights in garages linked to a campus app so commuters immediately see open spots without circling aisles.',
+                impact: 'High',
+                feasibility: 'High',
+                votes: 524
+            },
+            {
+                id: 2,
+                category: 'transit',
+                title: 'Geofenced Spot Queueing System',
+                tag: 'Transit & Parking Tech',
+                icon: 'fa-mobile-screen-button',
+                iconBg: 'bg-blue-100 text-blue-700',
+                description: 'A 0.5-mile GPS geofenced queueing feature that lets incoming drivers hold an open spot with a 7-minute expiration timer to prevent off-campus squatting.',
+                impact: 'High',
+                feasibility: 'High',
+                votes: 489
+            },
+            {
+                id: 3,
+                category: 'infra',
+                title: 'Dedicated Right-Turn Bypass Lanes',
+                tag: 'Infrastructure',
+                icon: 'fa-road-bridge',
+                iconBg: 'bg-amber-100 text-amber-700',
+                description: 'Add physical right-turn bypass lanes at critical egress points (Cameron Blvd to W.T. Harris & N. Tryon) to clear backups off main campus arterials.',
+                impact: 'High',
+                feasibility: 'Medium',
+                votes: 342
+            },
+            {
+                id: 4,
+                category: 'infra',
+                title: 'Intelligent Adaptive Signal Control',
+                tag: 'Infrastructure',
+                icon: 'fa-traffic-light',
+                iconBg: 'bg-emerald-100 text-emerald-700',
+                description: 'Coordinate real-time sensor-driven signal timing on Cameron Blvd and Craver Rd with Charlotte DOT signals on outer municipal arterials.',
+                impact: 'High',
+                feasibility: 'High',
+                votes: 289
+            },
+            {
+                id: 5,
+                category: 'transit',
+                title: 'Niner Transit Fleet Expansion',
+                tag: 'Transit & Parking Tech',
+                icon: 'fa-bus',
+                iconBg: 'bg-emerald-100 text-emerald-700',
+                description: 'Increase shuttle frequency during peak arrival hours (8-11 AM) and exit hours (3-5:30 PM) so students leave vehicles parked in perimeter lots.',
+                impact: 'High',
+                feasibility: 'High',
+                votes: 412
+            },
+            {
+                id: 6,
+                category: 'transit',
+                title: 'Separated Bike & Scooter Corridors',
+                tag: 'Transit & Parking Tech',
+                icon: 'fa-person-biking',
+                iconBg: 'bg-purple-100 text-purple-700',
+                description: 'Construct physically barrier-protected bike/scooter highways along Cameron Blvd & Craver Rd to safely isolate micro-mobility from car lanes.',
+                impact: 'Medium',
+                feasibility: 'High',
+                votes: 256
+            },
+            {
+                id: 7,
+                category: 'demand',
+                title: 'Staggered 15-Minute Class Intervals',
+                tag: 'Scheduling',
+                icon: 'fa-calendar-days',
+                iconBg: 'bg-rose-100 text-rose-700',
+                description: 'Stagger class start/end times across 15-minute windows across colleges to flatten the rush-hour curve rather than dumping all commuters onto roads at once.',
+                impact: 'High',
+                feasibility: 'Medium',
+                votes: 378
+            },
+            {
+                id: 8,
+                category: 'demand',
+                title: 'Hybrid Intro Gen-Ed Class Formats',
+                tag: 'Scheduling',
+                icon: 'fa-laptop-code',
+                iconBg: 'bg-indigo-100 text-indigo-700',
+                description: 'Shift high-enrollment introductory lectures into hybrid formats to reduce daily vehicle commutes without sacrificing instruction quality.',
+                impact: 'Medium',
+                feasibility: 'High',
+                votes: 210
+            },
+            {
+                id: 9,
+                category: 'transit',
+                title: 'Subsidized LYNX Light Rail Passes',
+                tag: 'Transit & Parking Tech',
+                icon: 'fa-train',
+                iconBg: 'bg-blue-100 text-blue-700',
+                description: 'Partner with CATS to provide full light rail pass integration for students living along the Blue Line, encouraging car-free commutes.',
+                impact: 'High',
+                feasibility: 'High',
+                votes: 465
+            }
+        ];
+
+        // Hotspots Data
+        const hotspotsData = {
+            1: {
+                title: 'Cameron Blvd & W.T. Harris Intersection',
+                level: 'Severe Congestion (Morning Peak)',
+                problem: 'Traffic backs up over 0.5 miles on Cameron Blvd waiting to turn right/left onto municipal W.T. Harris arterial during 8:30-9:30 AM.',
+                fix: 'Build a dedicated continuous right-turn bypass lane and sync signal timings with Charlotte DOT sensors.',
+                stat: '~12 min average delay'
+            },
+            2: {
+                title: 'Cameron Blvd & University City Blvd',
+                level: 'High Congestion (Evening Peak)',
+                problem: 'Heavy vehicle queueing exiting campus toward I-85. Short left-turn bay causes gridlock in straight lanes.',
+                fix: 'Extend the left-turn storage lane by 200 feet and add adaptive signal timing for evening exodus.',
+                stat: '~9 min average delay'
+            },
+            3: {
+                title: 'Craver Road & Student Union Deck Bottleneck',
+                level: 'Extreme Micro-mobility & Car Mix',
+                problem: 'Pedestrians, e-scooters, shuttles, and cars all compete on a narrow 2-lane road with frequent crosswalk stops.',
+                fix: 'Install raised pedestrian crossings, separate scooter highway, and deck entry overhead spot lights.',
+                stat: '~14 min average delay'
+            },
+            4: {
+                title: 'UNC Charlotte Main LYNX Station Terminal',
+                level: 'High Opportunity Zone',
+                problem: 'Underutilized connection point between Light Rail and internal campus perimeter shuttles.',
+                fix: 'Add covered micro-mobility hub, immediate express shuttle links to South Village & Academic Core.',
+                stat: 'High potential modal shift'
+            }
+        };
+
+        // Initialize Page Elements
+        document.addEventListener('DOMContentLoaded', () => {
+            renderSolutions('all');
+            selectHotspot(1);
+            initChart();
+            updateCalculator();
+
+            // Mobile menu toggle
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+        });
+
+        // Render Solutions Matrix
+        function renderSolutions(filter) {
+            const container = document.getElementById('solutions-container');
+            container.innerHTML = '';
+
+            const items = filter === 'all' 
+                ? solutionsData 
+                : solutionsData.filter(s => s.category === filter);
+
+            items.forEach(s => {
+                const card = document.createElement('div');
+                card.className = 'bg-slate-50 border border-slate-200 rounded-2xl p-6 card-hover flex flex-col justify-between';
+                card.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 rounded-xl ${s.iconBg} flex items-center justify-center text-lg font-bold">
+                                <i class="fa-solid ${s.icon}"></i>
+                            </div>
+                            <span class="text-xs font-semibold px-2.5 py-1 bg-slate-200 text-slate-700 rounded-full">${s.tag}</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">${s.title}</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed mb-4">${s.description}</p>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-200">
+                        <div class="flex justify-between items-center text-xs mb-3">
+                            <span class="text-slate-500">Impact: <strong class="text-slate-800">${s.impact}</strong></span>
+                            <span class="text-slate-500">Feasibility: <strong class="text-slate-800">${s.feasibility}</strong></span>
+                        </div>
+                        <button onclick="upvoteSolution(${s.id}, this)" class="w-full bg-white border border-slate-300 hover:border-uncc-green text-slate-700 hover:text-uncc-green font-semibold py-2 px-3 rounded-lg text-xs transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-thumbs-up"></i> Upvote Solution (<span class="vote-count">${s.votes}</span>)
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Filter Solutions
+        function filterSolutions(category) {
+            document.querySelectorAll('#filter-tabs button').forEach(btn => {
+                btn.classList.remove('bg-uncc-green', 'text-white');
+                btn.classList.add('bg-slate-100', 'text-slate-600');
+            });
+            event.target.classList.remove('bg-slate-100', 'text-slate-600');
+            event.target.classList.add('bg-uncc-green', 'text-white');
+
+            renderSolutions(category);
+        }
+
+        // Upvote Solution
+        function upvoteSolution(id, btnElement) {
+            const item = solutionsData.find(s => s.id === id);
+            if (item) {
+                item.votes++;
+                const countSpan = btnElement.querySelector('.vote-count');
+                countSpan.textContent = item.votes;
+                btnElement.classList.add('bg-emerald-50', 'border-emerald-500', 'text-emerald-700');
+                btnElement.disabled = true;
+            }
+        }
+
+        // Select Hotspot Detail
+        function selectHotspot(id) {
+            const data = hotspotsData[id];
+            const detailPanel = document.getElementById('hotspot-details');
+            
+            detailPanel.innerHTML = `
+                <div class="space-y-4">
+                    <div class="inline-flex items-center gap-2 bg-red-500/20 text-red-400 border border-red-500/30 px-3 py-1 rounded-full text-xs font-bold uppercase">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Hotspot #${id}
+                    </div>
+                    <h3 class="text-2xl font-bold text-white">${data.title}</h3>
+                    
+                    <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-700 space-y-2">
+                        <span class="text-xs font-bold text-amber-400 uppercase tracking-wider block">Current Bottleneck Issue</span>
+                        <p class="text-slate-300 text-xs leading-relaxed">${data.problem}</p>
+                    </div>
+
+                    <div class="bg-emerald-950/40 p-4 rounded-xl border border-emerald-800/40 space-y-2">
+                        <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider block">Proposed Targeted Fix</span>
+                        <p class="text-emerald-200 text-xs leading-relaxed">${data.fix}</p>
+                    </div>
+
+                    <div class="flex items-center justify-between pt-2 text-xs text-slate-400 border-t border-slate-700">
+                        <span>Est. Peak Delay: <strong class="text-white">${data.stat}</strong></span>
+                        <span class="text-uncc-gold font-semibold">Priority Engineering Target</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Initialize Chart for Sports Funding Myth
+        function initChart() {
+            const ctx = document.getElementById('fundingChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: [
+                        'Student Sports Fees (Restricted)',
+                        'Ticket Sales & Sponsorships',
+                        'NC Sports Wagering Tax',
+                        'NCAA Media Rights'
+                    ],
+                    datasets: [{
+                        data: [45, 30, 15, 10],
+                        backgroundColor: [
+                            '#00703C',
+                            '#B3A369',
+                            '#0284C7',
+                            '#D97706'
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                boxWidth: 12,
+                                font: {
+                                    size: 10
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return ' ' + context.label + ': ' + context.raw + '% (Auxiliary legally locked)';
+                                }
+                            }
+                        }
+                    },
+                    cutout: '65%'
+                }
+            });
+        }
+
+        // Calculator Logic
+        function updateCalculator() {
+            const days = parseInt(document.getElementById('days-slider').value);
+            const delay = parseInt(document.getElementById('delay-slider').value);
+            const mode = document.getElementById('alt-mode').value;
+
+            document.getElementById('days-val').textContent = days + ' Days';
+            document.getElementById('delay-val').textContent = delay + ' Mins';
+
+            // Calculations based on 16 weeks per semester
+            const weeks = 16;
+            const totalMinutesSaved = (delay * days * weeks);
+            const hoursSaved = (totalMinutesSaved / 60).toFixed(1);
+
+            // Estimated gas/wear savings based on mode
+            let moneyFactor = 4.0;
+            if (mode === 'smart-app') moneyFactor = 3.8;
+            if (mode === 'light-rail') moneyFactor = 6.0;
+            if (mode === 'scooter') moneyFactor = 3.5;
+
+            const moneySaved = Math.round(days * weeks * moneyFactor);
+            const co2Saved = Math.round(hoursSaved * 1.6);
+
+            document.getElementById('time-saved-res').innerHTML = `${hoursSaved} <span class="text-lg font-normal text-slate-500">Hours</span>`;
+            document.getElementById('money-saved-res').textContent = `$${moneySaved}`;
+            document.getElementById('co2-res').textContent = `${co2Saved} kg CO2`;
+        }
+
+        // Idea Submission Handler
+        function handleIdeaSubmit(e) {
+            e.preventDefault();
+            const toast = document.getElementById('form-toast');
+            toast.classList.remove('hidden');
+            e.target.reset();
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
